@@ -1,13 +1,12 @@
 #include "main.h"
 
 /**
- * convert - converter function, a clone of itoa
- * @num: number
+ * convert - converter function
+ * @num: num
  * @base: base
- * @flags: argument flags
- * @params: parameter struct
- *
- * Return: string
+ * @flags: arg flags
+ * @params: param struct
+ * Return: str
  */
 char *convert(long int num, int base, int flags, params_t *params)
 {
@@ -40,9 +39,8 @@ char *convert(long int num, int base, int flags, params_t *params)
 
 /**
  * print_unsigned - prints unsigned integer nums
- * @ap: argument pointer
- * @params: the parameters struct
- *
+ * @ap: argument p
+ * @params: the params struct
  * Return: bytes printed
 */
 int print_unsigned(va_list ap, params_t *params)
@@ -60,9 +58,9 @@ int print_unsigned(va_list ap, params_t *params)
 }
 
 /**
- * print_address - prints address
- * @ap: argument pointer
- * @params: the parameters struct
+ * print_address - prints addr
+ * @ap: arg p
+ * @params: the params struct
  * Return: bytes printed
  */
 int print_address(va_list ap, params_t *params)

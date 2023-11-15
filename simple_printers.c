@@ -1,33 +1,37 @@
 #include "main.h"
 
 /**
- * print_from_to - this function prints range of char addresses
- * @start: starting address
- * @stop: stopping address
- * @except: excepts address
+ * print_from_to - this function prints range of char address
+ * @start: this starting address
+ * @stop: this stopped address
+ * @except: this except address
  *
- * Return: number of  bytes printed
+ * Description: this function print range of char address
+ *
+ * Return: the returned value are printed value of number bytes
  */
 
 int print_from_to(char *start, char *stop, char *except)
 {
-	int sum = 0;
+	int addation = 0;
 
 	while (start <= stop)
 	{
 		if (start != except)
-			sum += _putchar(*start);
+			addation += _putchar(*start);
 		start++;
 	}
-	return (sum);
+	return (addation);
 }
 
 /**
- * print_rev - prints string in reverse
- * @ap: string
+ * print_rev - this function prints string in reverse
+ * @ap: parameters string
  * @params: the parameters of struct
  *
- * Return: numbers of bytes printed
+ * Description: prints string in reverse
+ *
+ * Return: the returned value printed of numbers bytes
  */
 
 int print_rev(va_list ap, params_t *params)
@@ -42,17 +46,19 @@ int print_rev(va_list ap, params_t *params)
 			len++;
 		str--;
 		for (; len > 0; len--, str--)
-			sum += _putchar(*str);
+			add += _putchar(*str);
 	}
-	return (sum);
+	return (add);
 }
 
 /**
- * print_rot13 - prints string in rot13
- * @ap: string
+ * print_rot13 - this function prints string in rot13
+ * @ap: parameters string
  * @params: the parameters of struct
  *
- * Return: number of bytes printed
+ * Description: prints string in rot13
+ *
+ * Return: the returned value printed of numbers bytes
  */
 
 int print_rot13(va_list ap, params_t *params)

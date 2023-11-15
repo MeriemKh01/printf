@@ -1,52 +1,58 @@
 #include "main.h"
 
 /**
- * get_specifier - finds the format func
+ * get_specifier - this function finds format of bytes
  * @s: the format string
  *
- * Return: the numbber of bytes printed
+ * Description: this function find format of bytes
+ *
+ * Return: the returned value the number of bytes
  */
+
 int (*get_specifier(char *s))(va_list ap, params_t *params)
 {
-	specifier_t specifiers[] = {
+	specifier_t Specifiers[] = {
 		{"c", print_char},
 		{"d", print_int},
 		{"i", print_int},
-		{"s", prnt_string},
-                {"%", print_percent},
-                {"b", print_binary},
+		{"s", print_string},
+		{"%", print_percent},
+		{"b", print_binary},
 		{"o", print_octal},
-                {"u", print_unsigned},
-                {"x", print_hex},
+		{"u", print_unsigned},
+		{"x", print_hex},
 		{"X", print_HEX},
-                {"p", print_address},
-                {"S", print_S},
+		{"P", print_address},
+		{"S", print_S},
 		{"r", print_rev},
-                {"R", print_rot13},
+		{"R", print_rot13},
 		{NULL, NULL}
 	};
-	int i = 0;
+	int j = 0;
 
-	while (specifiers[i].specifier)
+	while (Specifiers[j].specifier)
 	{
-		if (*s == specifiers[i].specifier[0])
+		if (*s == Specifiers[j].specifier[0])
 		{
-			return (specifiers[i].f);
+			return (Specifiers[j].f);
 		}
-		i++;
+		j++;
 	}
 	return (NULL);
 }
 
 /**
- * get_print_func - finds the format func
- * @s/ the format string
+ * get_print_func - this function finds format of bytes
+ * @s: the format string
  * @ap: argument pointer
- * @parmas: the parameters struct
+ * @params: the struct of params
  *
- * Return: the number of bytes printed
+ * Description: this function find format of bytes
+ *
+ * Return: the returned value the number of bytes
  */
-int get_print_func(char *s, va_list ap, params_t µparams)
+
+int get_print_func(char *s, va_list ap, params_t *params)
 {
 	int (*f)(va_list, params_t *) = get_specifier(s);
 
@@ -56,40 +62,50 @@ int get_print_func(char *s, va_list ap, params_t µparams)
 }
 
 /**
- * get_flag - finds the flag func
+ * get_flag - this function finds flag of bytes
  * @s: the format string
- * @params: the parameters struct
+ * @params: the struct of params
  *
- * Return: if flag valid
+ * Description: this function find flag of bytes
+ *
+ * Return: the returned value the number of bytes
  */
+
 int get_flag(char *s, params_t *params)
 {
-	int i = 0;
+	int k = 0;
 
 	switch (*s)
 	{
 		case '+':
-			i = params->plus_flag = 1;
+			k = params->plus_flag = 1;
+			break;
 		case ' ':
-                        i = params->plus_flag = 1;
+			k = params->space_flag = 1;
+			break;
 		case '#':
-                        i = params->plus_flag = 1;
+			k = params->hashtag_flag = 1;
+			break;
 		case '-':
-                        i = params->plus_flag = 1;
+			k = params->minus_flag = 1;
+			break;
 		case '0':
-                        i = params->plus_flag = 1;
+			k = params->zero_flag = 1;
 			break;
 	}
-	return (i);
+	return (k);
 }
 
 /**
- * get_modifier - finds the modifier func
+ * get_modifier - this function finds modifier of bytes
  * @s: the format string
- * @params: the parameters struct
+ * @params: the struct of params
  *
- * Return: if modifier was valid
+ * Description: this function find modifier of bytes
+ *
+ * Return: the returned value the number of bytes
  */
+
 int get_modifier(char *s, params_t *params)
 {
 	int i = 0;
@@ -100,21 +116,24 @@ int get_modifier(char *s, params_t *params)
 			i = params->h_modifier = 1;
 			break;
 		case 'l':
-                        i = params->l_modifier = 1;
-                        break;
+			i = params->l_modifier = 1;
+			break;
 	}
 	return (i);
 }
 
 /**
- * get_width - gets teh width from the format string
+ * get_width - this function get width of format string
  * @s: the format string
- * @params: the parameters struct
+ * @params: the struct of params
  * @ap: the argument pointer
  *
- * Return: new pointer
+ * Description: this function get width of format string
+ *
+ * Return: the returned value new pointer
  */
-char *get_width(char *s,paraùs_t *params, va_list ap)
+
+char *get_width(char *s, params_t *params, va_list ap)
 {
 	int d = 0;
 
